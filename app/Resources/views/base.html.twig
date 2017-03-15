@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{{asset("./style/bootstrap.min.css")}}"/>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        <script src="{{asset("./script/jquery.min.js")}}" ></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
