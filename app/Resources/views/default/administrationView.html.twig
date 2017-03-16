@@ -1,1 +1,18 @@
 {% extends "base.html.twig" %}
+
+{% block body %}
+    <div id="wrapper" class="container-fluid">
+        <div id="ctrl" class="col-xs-12">
+            <button id="showBooks">Livres</button>
+        </div>
+        <div id="content" class="col-xs-12">
+
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+ <script src="{{asset("./script/init.js")}}" ></script>
+ <script src="{{asset("./script/consulting_request.js")}}" ></script>
+ <script src="{{asset("./script/rendering.js")}}" ></script>
+ <script src="{{asset("./script/app.js")}}" ></script>
+{% endblock %}

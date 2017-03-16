@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Description of AdminController
  *
- * @author vien34
+ * @author fflachet
  * @Route("/administration")
  */
 class AdminController extends Controller{
