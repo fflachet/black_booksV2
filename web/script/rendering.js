@@ -1,8 +1,15 @@
 /* 
- * data rendering
+ * mets en forme dans la vue les données reçues
+ * certaines fonctions sont appelées au succes des requetes ajax(ici une liste de données)
+ * les appels sont effectués dans consulting_request
  */
 
 var table = null;
+
+/**
+ * cette methode fabrique le rendu(<table>) et l'insere dans la zone prévue (div id="content")
+ * l'algorithme est découpée en 3 parties
+ */
 function createTableBooks(books) {
     $(CONTENT).empty();
     table = document.createElement("table");
@@ -36,9 +43,10 @@ function getLineForTableBook(book) {
     return line;
 }
 
-
-
-
+/**
+ * creation de la ligne d'en-tete de notre table
+ * elle retourne la ligne afin qu'elle y soit insérée
+ */
 function getHeaderLineForTableBook() {
 
     //création des balises
@@ -118,14 +126,14 @@ function getLineForTableCopy(copy) {
 
     var selectStatus = getSelect(listOfStatus, copy.status.id);
     $(selectStatus).change(function () {
-        updateStateOfCopy(copy.id, $(this).val());
+        updateStatusOfCopy(copy.id, $(this).val());
     });
     $(cellStatus).append(selectStatus);
     $(line).append(cellStatus);
 
     var inputNb = document.createElement("input");
     $(inputNb).change(function () {
-        updateStateOfCopy(copy.id, $(this).val());
+        updatePriceOfCopy(copy.id, $(this).val());
     });
     $(cellPrice).append(inputNb);
     $(line).append(cellPrice);
