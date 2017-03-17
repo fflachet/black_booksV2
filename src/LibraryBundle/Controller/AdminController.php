@@ -8,6 +8,7 @@
 
 namespace LibraryBundle\Controller;
 
+use LibraryBundle\Entity\Book;
 use LibraryBundle\Entity\Copy;
 use LibraryBundle\Entity\State;
 use LibraryBundle\Entity\Status;
@@ -35,10 +36,21 @@ class AdminController extends Controller{
     }
     
     /**
-     * @Route("/copies/{id}/add")
+     * @Route("/books/{id}/copy")
      * @Method({"POST"})
+     * @param Request $r
      */
-    public function addBook(){
+    public function addCopy(Request $r,$id) {
+        $copy = new Copy();
+        $doctrine = $this->getDoctrine();
+        $copy->setBook($doctrine->getRepository(Book::class)->find($id));
+        $copy->setState($doctrine->getRepository(State::class)->find($r->get("state")));
+        $copy->setStatus($doctrine->getRepository(Status::class)->find($r->get("status")));
+        $copy->setPrice($r->get("price"));
+        $em = $doctrine->getManager();
+        $em->persist($copy);
+        $em->flush();
+        return new JsonResponse($copy);
         
     }
     

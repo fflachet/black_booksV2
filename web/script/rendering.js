@@ -50,6 +50,7 @@ function getLineForTableBook(book) {
     $(line).append($(cellAuthorName).text(book.authorFirstName + " " + book.authorName));
     $(line).click(function () {
         getCopiesFromBook(book.id);
+        currentBook = book;
     });
     return line;
 }
@@ -92,10 +93,10 @@ function createTableCopies(copies) {
     $(CONTENT).empty();
     $(CONTENT).append(table);
     $(table).append(getHeaderLineForTableCopies());
+    $(table).append(getEmptyLineForTableCopy());
     generateContentForTableCopies(copies);
     $(table).addClass("col-xs-10 col-xs-offset-1 books");
 }
-
 
 function generateContentForTableCopies(copies) {
     $.each(copies, function () {
@@ -144,12 +145,7 @@ function getLineForTableCopy(copy) {
     $(line).append(cellStatus);
 
     var inputNb = document.createElement("input");
-    $(inputNb).attr({
-        placeholder: copy.price,
-        type: "number",
-        min: 0,
-        max: 999
-    });
+    $(inputNb).attr({type: "decimal"}).val(copy.price);
     $(inputNb).change(function () {
         updatePriceOfCopy(copy.id, $(this).val());
     });
@@ -157,6 +153,53 @@ function getLineForTableCopy(copy) {
     $(line).append(cellPrice);
 
     $(cellCtrl).text(copy.ctrl);
+    $(line).append(cellCtrl);
+
+    return line;
+}
+function getEmptyLineForTableCopy() {
+    var line = document.createElement("tr");
+    var cellId = document.createElement("td");
+    var cellState = document.createElement("td");
+    var cellStatus = document.createElement("td");
+    var cellPrice = document.createElement("td");
+    var cellCtrl = document.createElement("td");
+
+    $(cellId).text("");
+    $(line).append(cellId);
+
+    var selectState = getSelect(listOfStates,null);
+    $(selectState).change(function () {
+//        updateStateOfCopy(copy.id, $(this).val());
+    });
+    $(cellState).append(selectState);
+    $(line).append(cellState);
+
+    var selectStatus = getSelect(listOfStatus,null);
+    $(selectStatus).change(function () {
+//        updateStatusOfCopy(copy.id, $(this).val());
+    });
+    $(cellStatus).append(selectStatus);
+    $(line).append(cellStatus);
+
+    var inputNb = document.createElement("input");
+    $(inputNb).attr({type: "decimal"});
+    $(inputNb).change(function () {
+//        updatePriceOfCopy(copy.id, $(this).val());
+    });
+    $(cellPrice).append(inputNb);
+    $(line).append(cellPrice);
+    
+    var button = document.createElement("button");
+    $(button).click(function(){
+        var copy = {
+            "state" : $(selectState).val(),
+            "status" : $(selectStatus).val(),
+            "price" : $(inputNb).val()
+        };
+        addCopy(copy); 
+    });
+    $(cellCtrl).append($(button).text("ajouter"));
     $(line).append(cellCtrl);
 
     return line;

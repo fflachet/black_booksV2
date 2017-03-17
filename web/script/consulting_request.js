@@ -109,7 +109,22 @@ function updatePriceOfCopy(id,value) {
         datatype: "json",
         data: {"price" : value},
         success: function(copy) {
-            alert(copy);
+        },
+        error: function(){
+            alert("erreur");
+        }
+    });
+}
+
+function addCopy(copy) {
+    $.ajax({
+        url: URL + "administration/books/" + currentBook.id + "/copy",
+        async: true,
+        type: "POST",
+        datatype: "json",
+        data: copy,
+        success: function(c) {
+            $(table).append(getLineForTableCopy(c));
         },
         error: function(){
             alert("erreur");
