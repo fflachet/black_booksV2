@@ -15,12 +15,18 @@ function createTableBooks(books) {
     table = document.createElement("table");
     $(CONTENT).append(table);
     $(table).append(getHeaderLineForTableBook());
-    getContentForTableBook(books);
+    generateContentForTableBook(books);
+    // mise en forme via l'application des classes css
     $(table).addClass("col-xs-10 col-xs-offset-1 books");
 
 }
 
-function getContentForTableBook(books) {
+/**
+ * pour chaque livre de la liste la fonction va créer une ligne et l'affecter à la table
+ * 
+ * @param {type} books liste des livres (objets reçus via la requete ajax)
+ */
+function generateContentForTableBook(books) {
     $.each(books, function () {
         $(table).append(getLineForTableBook(this));
     });
@@ -81,11 +87,12 @@ function createTableCopies(copies) {
     $(CONTENT).empty();
     $(CONTENT).append(table);
     $(table).append(getHeaderLineForTableCopies());
-    getContentForTableCopies(copies);
+    generateContentForTableCopies(copies);
     $(table).addClass("col-xs-10 col-xs-offset-1 books");
 }
 
-function getContentForTableCopies(copies) {
+
+function generateContentForTableCopies(copies) {
     $.each(copies, function () {
         $(table).append(getLineForTableCopy(this));
     });

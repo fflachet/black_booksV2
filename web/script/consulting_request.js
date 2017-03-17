@@ -101,28 +101,14 @@ function updateStatusOfCopy(id,value) {
 
 //PRICES
 
-function getPrices() {
-    $.ajax({
-        url: URL + "consulting/prices",
-        async: false,
-        type: "GET",
-        datatype: "json",
-        success: function(prices) {
-            
-        },
-        error: function(){
-            alert("erreur");
-        }
-    });
-}
-
 function updatePriceOfCopy(id,value) {
+    alert(value);
     $.ajax({
         url: URL + "administration/copies/"+id+"/price",
         async: true,
         type: "PUT",
         datatype: "json",
-        data: {"priceId" : value},
+        data: {"price" : value},
         success: function(copy) {
             alert(copy);
         },

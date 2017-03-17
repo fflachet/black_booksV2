@@ -82,10 +82,9 @@ class AdminController extends Controller{
      */
     public function updateCopyPrice(Request $r,$id){
         $copy = $this->getDoctrine()->getRepository(Copy::class)->find($id);
-        $price = $this->getDoctrine()->getRepository(Price::class)->find($r->get("PriceId"));
         $em = $this->getDoctrine()->getManager();
         
-        $copy->setPrice($price);
+        $copy->setPrice($r->get("price"));
         $em->merge($copy);
         $em->flush();
         
