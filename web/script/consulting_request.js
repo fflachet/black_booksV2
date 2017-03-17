@@ -102,7 +102,6 @@ function updateStatusOfCopy(id,value) {
 //PRICES
 
 function updatePriceOfCopy(id,value) {
-    alert(value);
     $.ajax({
         url: URL + "administration/copies/"+id+"/price",
         async: true,

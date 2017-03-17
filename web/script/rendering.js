@@ -32,6 +32,11 @@ function generateContentForTableBook(books) {
     });
 }
 
+/**
+ * retourne une ligne correspondante à la ligne
+ * @param {type} book un objet de type book
+ * @returns {Element}
+ */
 function getLineForTableBook(book) {
     //création des balises
     var line = document.createElement("tr");
@@ -139,6 +144,13 @@ function getLineForTableCopy(copy) {
     $(line).append(cellStatus);
 
     var inputNb = document.createElement("input");
+    $(inputNb).attr({
+        placeholder: copy.price,
+        type: "number",
+        min: 0,
+        max: 999
+    });
+    $(inputNb).attr("type","number");
     $(inputNb).change(function () {
         updatePriceOfCopy(copy.id, $(this).val());
     });
