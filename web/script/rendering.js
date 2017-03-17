@@ -150,7 +150,6 @@ function getLineForTableCopy(copy) {
         min: 0,
         max: 999
     });
-    $(inputNb).attr("type","number");
     $(inputNb).change(function () {
         updatePriceOfCopy(copy.id, $(this).val());
     });
