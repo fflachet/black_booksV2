@@ -10,11 +10,12 @@ namespace LibraryBundle\Controller;
 
 use LibraryBundle\Entity\Book;
 use LibraryBundle\Entity\Copy;
+use LibraryBundle\Entity\State;
+use LibraryBundle\Entity\Status;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Description of ConsultingController
@@ -23,6 +24,24 @@ use Symfony\Component\HttpFoundation\Response;
  * @Route("/consulting")
  */
 class ConsultingController extends Controller{
+    
+    /**
+     * @Route("/states")
+     * @Method({"GET"})
+     */
+    public function getState() {
+        $states = $this->getDoctrine()->getRepository(State::class)->findAll();
+        return new JsonResponse($states);
+    }
+    
+    /**
+     * @Route("/status")
+     * @Method({"GET"})
+     */
+    public function getStatus() {
+        $status = $this->getDoctrine()->getRepository(Status::class)->findAll();
+        return new JsonResponse($status);
+    }
     
    /**
      * @Route("/")

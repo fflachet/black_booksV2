@@ -100,8 +100,8 @@ class Book implements JsonSerializable
         return array(
             "id" => $this->id,
             "title" => $this->title,
-            "author" => $this->author->getName()
-            
+            "authorName" => $this->author->getName(),
+            "authorFirstName" => $this->author->getFirstname(),
         );
     }
 

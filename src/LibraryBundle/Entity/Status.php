@@ -66,7 +66,8 @@ class Status implements JsonSerializable
 
      public function jsonSerialize() {
         return array(
-            "book" => $this->name
+            "id" => $this->id,
+            "name" => $this->name
         );
     }
 }

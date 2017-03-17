@@ -162,10 +162,11 @@ class Copy implements JsonSerializable
     
      public function jsonSerialize() {
         return array(
+            "id" => $this->id,
             "book" => $this->book,
-            "state" => $this->state->getName(),
+            "state" => $this->state,
             "status" => $this->status,
-            "price" => $this->price,
+            "price" => $this->price
         );
     }
 }

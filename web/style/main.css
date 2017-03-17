@@ -1,10 +1,46 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 15 mars 2017, 18:36:30
-    Author     : vien34
-*/
+table, tr, td, th {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th {
+    text-align: center;
+}
 
+table.books tr td {
+    height: 50px;
+    line-height: 50px;
+}
+
+table.books tr {
+    cursor: pointer;
+}
+
+table.books td {
+    font-size: 1.2em;
+    padding-left: 5px;
+    font-weight: bold;
+}
+
+table.books td:first-child {
+    text-align: center;
+}
+
+table.books td:last-child {
+    padding-left: 15px;
+}
+table.books tr:nth-child(even) {
+    background-color: #08C;
+}
+table.books tr:nth-child(odd) {
+    background-color: #bce8f1
+}
+table.books tr:hover {
+    background-color: red;
+}
+table.books tr:nth-child(1) {
+    background-color: white;
+    height: 75px;
+    line-height: 75px;
+    font-size: 1.8em;
+    cursor: default;
+}

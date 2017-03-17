@@ -92,8 +92,9 @@ class Author implements JsonSerializable {
     public function jsonSerialize() {
         return array(
             "id" => $this->id,
-            "title" => $this->name,
-            "author" => $this->fristname
+            "name" => $this->name,
+            "firstname" => $this->firstname,
+                
         );
     }
 

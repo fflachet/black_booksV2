@@ -62,7 +62,9 @@ class State implements JsonSerializable {
 
     public function jsonSerialize() {
         return array(
+            "id" => $this->id,
             "name" => $this->name,
+            
         );
     }
 
